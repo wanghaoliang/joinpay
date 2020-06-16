@@ -24,7 +24,8 @@ class Config
     const SIGN_TYPE = '2';//加密类型
 
     //分账
-    const MERGHANT_NOTIFY = 'https://123.com';//添加分账回调地址
+    const MERGHANT_NOTIFY = 'https://123.com/merch';//添加分账回调地址
+    const PAY_NOTIFY = 'https://123.com/pay';//快捷支付回调
 
 
 
