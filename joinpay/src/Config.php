@@ -27,7 +27,7 @@ class Config
     //分账
     const MERGHANT_NOTIFY = 'https://123.com/merch';//添加分账回调地址
     const PAY_NOTIFY = 'https://123.com/pay';//快捷支付回调
-
+    const IS_RESPONSE = false; //是否处理返回数据  建议false
 
 
 }

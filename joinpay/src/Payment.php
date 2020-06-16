@@ -404,6 +404,22 @@ class Payment
     }
 
 
+    /**
+     * 支付订单查询
+     * @param $message
+     * @return bool|string
+     * @throws \Exception
+     */
+    public function queryPayment(&$message){
+        $data = [
+            'mch_order_no'=>$this->mchOrderNo,
+        ];
+
+        $res = RequestUtil::curl_post($data,$message);
+
+        return $res;
+
+    }
 
 
 }

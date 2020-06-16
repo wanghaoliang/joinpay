@@ -59,22 +59,68 @@ class RequestUtil
         curl_close($ch);
 
         $message['request'] =  $data;
+        if(Config::IS_RESPONSE){
+            return self::returnData($data);
 
+        }
         return $data;
     }
 
+    /**
+     * 结果处理异常请参考文档
+     * @param string $response
+     * @return bool|mixed
+     */
+    public static function returnData($response = ''){
+
+        $result = json_decode($response, true);
+
+        if (!isset($result['resp_code']) || $result['resp_code'] != 'SUCCESS'){
+            //请求异常
+            return false;
+        }
+
+        if (!isset($result['biz_code']) || $result['biz_code'] != 'JS000000'){
+            //请求异常
+            return false;
+        }
+
+        $res = json_decode($result['data'], true);
+
+
+        return $res;
+    }
+
+    /**
+     * 接口映射
+     * @param string $function_name
+     * @return mixed
+     */
+    protected static function getMethod($function_name = ''){
+
+        $method = array(
+            'bankToSms' => 'fastPay.agreement.signSms',
+            'verifySms' => 'fastPay.agreement.smsSign',
+            'addMerchant' => 'identicalAltMch.create',
+            'fastPayment' => 'fastPay.agreement.pay',
+            'toUser' => 'altSettle.launch',
+            'queryToAccount' => 'fastPay.query',
+            'queryPayment' => 'altSettle.get',
+        );
+        return $method[$function_name];
+    }
     /**
      * 方法映射
      * @var array
      */
     protected static $function_list = array(
-        'marketChannelAuth' => 'fastpay',
-        'marketChannelAuthConfirm' => 'fastpay',
+        'bankToSms' => 'fastpay',
+        'verifySms' => 'fastpay',
         'addMerchant' => 'altFunds',
-        'marketCollectApply' => 'fastpay',
-        'marketrepayment' => 'altFunds',
-        'queryCbOrder' => 'query',
-        'queryOrder' => 'altFunds',
+        'fastPayment' => 'fastpay',
+        'toUser' => 'altFunds',
+        'queryToAccount' => 'query',
+        'queryPayment' => 'altFunds',
     );
     /**
      * @param string $function_name
@@ -133,22 +179,5 @@ class RequestUtil
         return json_encode($response,JSON_UNESCAPED_SLASHES);
     }
 
-    /**
-     * 接口映射
-     * @param string $function_name
-     * @return mixed
-     */
-    protected static function getMethod($function_name = ''){
 
-        $method = array(
-            'marketChannelAuth' => 'fastPay.agreement.signSms',
-            'marketChannelAuthConfirm' => 'fastPay.agreement.smsSign',
-            'addMerchant' => 'identicalAltMch.create',
-            'marketCollectApply' => 'fastPay.agreement.pay',
-            'marketrepayment' => 'altSettle.launch',
-            'queryCbOrder' => 'fastPay.query',
-            'queryOrder' => 'altSettle.get',
-        );
-        return $method[$function_name];
-    }
 }
