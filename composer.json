@@ -3,6 +3,7 @@
     "description": "php dome",
     "type": "project",
     "minimum-stability": "dev",
+    "license": "MIT",
     "authors": [
         {
             "name": "夏晓亮",
