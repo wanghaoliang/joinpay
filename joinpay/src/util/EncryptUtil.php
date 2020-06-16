@@ -29,11 +29,11 @@ class EncryptUtil
      * @param $args
      * @return bool|string
      */
-    public static function createSign($args)
+    public static function createSign($signData)
     {
-        if (!is_array($args)) return False;
+        if (!is_array($signData)) return False;
 
-        $signData = ksort($args);
+        ksort($signData);
 
         $requestString = '';
         foreach ($signData as $k => $v) {
