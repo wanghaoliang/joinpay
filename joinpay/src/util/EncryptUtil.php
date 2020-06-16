@@ -26,7 +26,7 @@ class EncryptUtil
 
     /**
      * 签名
-     * @param $args
+     * @param $signData
      * @return bool|string
      */
     public static function createSign($signData)
