@@ -119,7 +119,7 @@ class ToAccount
     public function toUser(&$message){
         //获取用户的商户码
         $post = array(
-            'alt_mch_no'	=> $this->altMchNo,//结算银行卡号
+            'alt_mch_no'	=> $this->altMchNo,//分账方编号
             'bank_account_no'	=> $this->bankAccountNo,//结算银行卡号
             'settle_amount'	=> 	$this->settleAmount,//结算金额
             'settle_fee'	=>	 bcsub ($this->rateAmount ,Config::SERVER_MONEY,2),//平台服务费
