@@ -432,7 +432,7 @@ class Payment
      * @return bool|string
      * @throws \Exception
      */
-    public function queryToAccount(&$message){
+    public function queryPayment(&$message){
 
         $data = [
             'mch_order_no'=>$this->mchOrderNo,
