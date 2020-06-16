@@ -131,22 +131,22 @@ class ToAccount
         return $result;
     }
 
-    protected $orgMchReqTime;
 
 
     /**
-     * 付款订单查询
+     * 支付订单查询
      * @param $message
      * @return bool|string
      * @throws \Exception
      */
-    public function queryToAccount(&$message){
-
+    public function queryPayment(&$message){
         $data = [
             'mch_order_no'=>$this->mchOrderNo,
-            'org_mch_req_time'=>$this->orgMchReqTime
         ];
+
         $res = RequestUtil::curl_post($data,$message);
+
         return $res;
+
     }
 }

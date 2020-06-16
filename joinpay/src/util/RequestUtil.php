@@ -105,8 +105,8 @@ class RequestUtil
             'fastPayment' => 'fastPay.agreement.pay',
             'directPay' => 'fastPay.direct.pay',
             'toUser' => 'altSettle.launch',
-            'queryToAccount' => 'fastPay.query',
-            'queryPayment' => 'altSettle.get',
+            'queryPayment' => 'fastPay.query',
+            'queryToAccount' => 'altSettle.get',
         );
         return $method[$function_name];
     }
@@ -121,8 +121,8 @@ class RequestUtil
         'fastPayment' => 'fastpay',
         'directPay' => 'fastpay',
         'toUser' => 'altFunds',
-        'queryToAccount' => 'query',
-        'queryPayment' => 'altFunds',
+        'queryPayment' => 'query',
+        'queryToAccount' => 'altFunds',
     );
     /**
      * @param string $function_name

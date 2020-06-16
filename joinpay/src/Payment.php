@@ -405,22 +405,40 @@ class Payment
     }
 
 
+    protected $orgMchReqTime;
+
     /**
-     * 支付订单查询
+     * @return mixed
+     */
+    public function getOrgMchReqTime()
+    {
+        return $this->orgMchReqTime;
+    }
+
+    /**
+     * @param mixed $orgMchReqTime
+     * @return Payment
+     */
+    public function setOrgMchReqTime($orgMchReqTime)
+    {
+        $this->orgMchReqTime = $orgMchReqTime;
+        return $this;
+    }
+
+
+    /**
+     * 付款订单查询
      * @param $message
      * @return bool|string
      * @throws \Exception
      */
-    public function queryPayment(&$message){
+    public function queryToAccount(&$message){
+
         $data = [
             'mch_order_no'=>$this->mchOrderNo,
+            'org_mch_req_time'=>$this->orgMchReqTime
         ];
-
         $res = RequestUtil::curl_post($data,$message);
-
         return $res;
-
     }
-
-
 }
