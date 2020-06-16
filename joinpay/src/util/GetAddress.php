@@ -6,7 +6,7 @@
  * Time: 18:13
  */
 
-namespace app\channel\huijumax\Logic;
+namespace Joinpay\util;
 
 
 

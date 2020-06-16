@@ -9,8 +9,9 @@
 namespace Joinpay;
 
 
-use app\channel\huijumax\Logic\GetAddress;
-use app\channel\huijumax\Logic\getMcc;
+
+use Joinpay\util\GetAddress;
+use Joinpay\util\getMcc;
 use Joinpay\util\RequestUtil;
 
 class Payment

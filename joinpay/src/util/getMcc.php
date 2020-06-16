@@ -6,7 +6,7 @@
  * Time: 17:38
  */
 
-namespace app\channel\huijumax\Logic;
+namespace Joinpay\util;
 
 /**
  * Class getMcc
