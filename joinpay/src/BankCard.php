@@ -154,11 +154,12 @@ class BankCard
 
 
     /**
+     * 发送短信
      * @param array $message
      * @return bool|string
      * @throws \Exception
      */
-    public function marketChannelAuth(&$message = array())
+    public function bankToSms(&$message = array())
     {
         $res =   array(
             "mch_order_no" => $this->mchOrderNo,
@@ -173,7 +174,26 @@ class BankCard
             "cvv" => $this->cvv//$param['cvn2'],
         );
 
-        $return_data =RequestUtil::curl_post($res,&$message);
+        $return_data =RequestUtil::curl_post($res,$message);
         return $return_data;
     }
+
+    /**
+     * 验证短信
+     * @param string $order
+     * @param string $sms_code
+     * @param array $message
+     * @return array|bool|string
+     * @throws \Exception
+     */
+    public function verifySms($order = '',$sms_code = '',&$message = array()){
+        $res = array(
+            'mch_order_no' => $order,//订单号
+            'sms_code' => $sms_code,//短信验证码
+        );
+
+        $res = RequestUtil::curl_post($res,$message);
+        return $res;
+    }
+
 }
