@@ -16,7 +16,7 @@ composer require xiaoliang/joinpay
 ##示例
 - 1 添加分账
 
-```
+```php
 use Joinpay\Merchant;
 
 
@@ -30,3 +30,20 @@ $Merchant->setAltLoginName('78')
             ->setBankAccountNo('2164598498549')
             ->addMerchant($me);
 ```
+- 2 签订协议
+```php
+use Joinpay\BankCard;
+
+
+$BankCard = new BankCard();
+$me = array();
+$info = $BankCard->setBankCardNo('622206123456')
+        ->setCvv('123')
+        ->setIdNo('100101199412124656')
+        ->setExpireDate('23/02')
+        ->setMchOrderNo('A123456')
+        ->setMobileNo('17182988498')
+        ->setPayerName('李四')
+        ->bankToSms($me);
+```
+- 3

@@ -178,18 +178,36 @@ class BankCard
         return $return_data;
     }
 
+    protected $smsCode = '';
+
+    /**
+     * @return string
+     */
+    protected function getSmsCode()
+    {
+        return $this->smsCode;
+    }
+
+    /**
+     * @param string $smsCode
+     * @return BankCard
+     */
+    public function setSmsCode($smsCode)
+    {
+        $this->smsCode = $smsCode;
+        return $this;
+    }
+
     /**
      * 验证短信
-     * @param string $order
-     * @param string $sms_code
      * @param array $message
      * @return array|bool|string
      * @throws \Exception
      */
-    public function verifySms($order = '',$sms_code = '',&$message = array()){
+    public function verifySms(&$message = array()){
         $res = array(
-            'mch_order_no' => $order,//订单号
-            'sms_code' => $sms_code,//短信验证码
+            'mch_order_no' => $this->mchOrderNo,//订单号
+            'sms_code' => $this->smsCode,//短信验证码
         );
 
         $res = RequestUtil::curl_post($res,$message);
