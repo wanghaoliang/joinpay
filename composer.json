@@ -2,6 +2,7 @@
     "name": "xiaoliang/joinpay",
     "description": "php dome",
     "type": "project",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "夏晓亮",
