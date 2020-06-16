@@ -22,6 +22,7 @@ class Config
     const ID_CARD_TYPE = 1;//证件类型
     const VERSION = '1.0';//版本
     const SIGN_TYPE = '2';//加密类型
+    const SERVER_MONEY = '0.5';//收账手续费
 
     //分账
     const MERGHANT_NOTIFY = 'https://123.com/merch';//添加分账回调地址
